@@ -1,13 +1,13 @@
 name:                DarkstarAH
 version:             0.1.0.0
--- synopsis:
--- description:
-homepage:            https://github.com/githubuser/DarkstarAH#readme
+synopsis:            Darkstar AH report server
+description:         This server will return ah data for darkstar projects
+homepage:            https://github.com/mac10688/DarkstarAH#readme
 license:             BSD3
 license-file:        LICENSE
-author:              Author name here
-maintainer:          example@example.com
-copyright:           2017 Author name here
+author:              Ghaleon
+maintainer:          Nonya@email.com
+copyright:           2017 Ghaleon
 category:            Web
 build-type:          Simple
 extra-source-files:  README.md
@@ -15,7 +15,11 @@ cabal-version:       >=1.10
 
 executable DarkstarAH
   hs-source-dirs:      app
+                       Darkstar
   main-is:             Main.hs
+  other-modules:
+                       Darkstar.Queries
+                       Darkstar.Models
   default-language:    Haskell2010
   build-depends:       base >= 4.7 && < 5
                      , Spock >= 0.11
