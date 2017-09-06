@@ -29,3 +29,15 @@ data AuctionHouseTransaction = AuctionHouseTransaction
     transactionDate :: !Word32,
     sale :: !Word32
   } deriving (Show, Generic, ToJSON, FromJSON)
+
+data ArmorItem = ArmorItem
+  {
+    itemid :: !Word16,
+    name :: !T.Text
+  } deriving (Show, Generic, ToJSON, FromJSON)
+
+data WeaponItem = WeaponItem
+  {
+    itemid :: !Word16,
+    name :: !T.Text
+  } deriving (Show, Generic, ToJSON, FromJSON)

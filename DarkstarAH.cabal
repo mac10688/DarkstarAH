@@ -15,7 +15,6 @@ cabal-version:       >=1.10
 
 executable DarkstarAH
   hs-source-dirs:      app
-                       Darkstar
   main-is:             Main.hs
   other-modules:
                        Darkstar.Queries
@@ -33,3 +32,4 @@ executable DarkstarAH
                      , monad-logger
                      , resourcet
                      , mysql-haskell
+                     , wai-middleware-static

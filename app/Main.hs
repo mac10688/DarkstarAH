@@ -20,6 +20,8 @@ import qualified Database.MySQL.Base as MySQL
 
 import Darkstar.Queries
 
+import Network.Wai.Middleware.Static
+
 type Api = SpockM MySQL.MySQLConn () () ()
 
 type ApiAction a = SpockAction MySQL.MySQLConn () () a
@@ -37,7 +39,8 @@ main =
 
 app :: Api
 app =
-  do get root $
+  do middleware (staticPolicy (addBase "static"))
+     get root $
       text "Welcome to darkstar auction house database server."
      get "prices" $ do
       auctionHouseItems <- runQuery getAuctionHousePrices 
@@ -45,9 +48,11 @@ app =
      get ("transactionHistory" <//> var) $ \itemid -> do
       auctionHouseTransactions <- runQuery (getAuctionHouseTransactions itemid)
       json auctionHouseTransactions
-     {-get "armorItems" $ do
-      armors <- runQuery getItemArmors
-      json armors-}
-
+     get "armorItems" $ do
+      armors <- runQuery getArmorItems
+      json armors
+     get "weaponItems" $ do
+      weapons <- runQuery getWeaponItems
+      json weapons
 
 
